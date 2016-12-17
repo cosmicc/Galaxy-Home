@@ -1,17 +1,16 @@
 import logging
 
 from flask import Flask
-#from google.cloud import pubsub
-
-#client = pubsub.Client()
+from google.cloud import pubsub
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def index():
+     ps = pubsub.Client()
  #   pulled = subscription.pull(max_messages=2)
-    return 'GHS'
+     return 'GHS'
 
 @app.errorhandler(500)
 def server_error(e):
