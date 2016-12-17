@@ -11,14 +11,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     pulled = subscription.pull(max_messages=2)
-    for ack_id, message in pulled:
-        try:
-            return (message)
-        except ApplicationException as e:
-            log_exception(e)
-        else:
-            subscription.acknowledge([ack_id])
-
+    return 'GHS'
 
 @app.errorhandler(500)
 def server_error(e):
