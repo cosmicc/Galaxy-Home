@@ -1,7 +1,7 @@
 import logging
 
 from flask import Flask
-#from google.cloud import pubsub
+from google.cloud import pubsub
 
 app = Flask(__name__)
 
