@@ -1,8 +1,13 @@
-runtime: python27
-api_version: 1
-threadsafe: true
-
-handlers:
-- url: /.*
-  script: main.app
-  login: required
+service: Galaxy-Home-Service
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+runtime_config:
+  python_version: 3
+manual_scaling:
+  instances: 1
+env_variables:
+    PUBSUB_TOPIC: projects/galaxy-home-system/topics/motion
+    # This token is used to verify that requests originate from your
+    # application. It can be any sufficiently random string.
+    PUBSUB_VERIFICATION_TOKEN: 1234abc
